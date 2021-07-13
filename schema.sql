@@ -40,7 +40,7 @@ CREATE TABLE lots (
     is_closed BIT,
     author_id INT,
     winner_id INT,
-    category_id INT,
+    category_id INT
 );
 
 CREATE FULLTEXT INDEX lots_ft_search ON lots(title, description);

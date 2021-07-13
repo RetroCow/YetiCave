@@ -80,5 +80,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $layout = get_template("templates/layout.php", ['main_content' => $main_content, 'categories' => $categories, 'title' => $title]);
 
 print $layout;
-print_r($users);
 ?>

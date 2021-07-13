@@ -14,9 +14,9 @@
         <a class="main-header__logo" href="index.php">
             <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
-        <form class="main-header__search" method="get" action="add.php">
-            <input type="search" name="search" placeholder="Поиск лота">
-            <input class="main-header__search-btn" type="submit" name="find" value="Найти">
+        <form class="main-header__search" method="get" action="search.php">
+            <input type="search" name="search" value="<?=$search??""?>" placeholder="Поиск лота">
+            <input class="main-header__search-btn" type="submit">
         </form>
         <?php if(isset($_SESSION['user'])):?>
         <a class="main-header__add-lot button" href="add.php">Добавить лот</a>
@@ -25,7 +25,7 @@
         <nav class="user-menu">
             <?php if (isset($_SESSION['user'])):?>
             <div class="user-menu__image">
-                <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
+                <img src="<?=$_SESSION['user']['avatar']??"img/user.jpg";?>" width="40" height="40" alt="Пользователь">
             </div>
             <div class="user-menu__logged">
                 <p><?=$_SESSION['user']['name']??""?></p>
@@ -59,7 +59,7 @@
     </nav>
     <div class="main-footer__bottom container">
         <div class="main-footer__copyright">
-            <p>© 2018, YetiCave</p>
+            <p>© <?=date("Y")?>, YetiCave</p>
             <p>Интернет-аукцион сноубордического и горнолыжного снаряжения</p>
         </div>
         <div class="main-footer__social social">
@@ -95,6 +95,5 @@
         </div>
     </div>
 </footer>
-
 </body>
 </html>

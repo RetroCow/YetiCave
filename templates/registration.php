@@ -30,7 +30,7 @@
     </div>
     <div class="form__item <?=isset($errors['password'])?"form__item--invalid":""?>">
       <label for="password">Пароль*</label>
-      <input id="password" type="text" name="password" placeholder="Введите пароль" value="<?=isset($form['password'])?$form['password']:""?>" required>
+      <input id="password" type="password" name="password" placeholder="Введите пароль" value="<?=isset($form['password'])?$form['password']:""?>" required>
       <span class="form__error"><?=isset($errors['password'])?$errors['password']:""?></span>
     </div>
     <div class="form__item <?=isset($errors['name'])?"form__item--invalid":""?>">

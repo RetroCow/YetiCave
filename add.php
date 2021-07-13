@@ -100,8 +100,8 @@
             $link_errors[] = mysqli_error($connect);
           }
           $file_path = 'upload/'.$file_path;
-          $sql = 'INSERT INTO lots (create_date, category_id, title, description, img, start_price, price_step, end_date) VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?);';
-          $stmt = db_get_prepare_stmt($connect, $sql, [$lot_category, $lot['lot_name'], $lot['message'], $file_path, $lot['lot_rate'], $lot['lot_step'], $lot['lot_date']]);
+          $sql = 'INSERT INTO lots (create_date, category_id, title, description, img, start_price, price_step, end_date, current_price) VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?, ?);';
+          $stmt = db_get_prepare_stmt($connect, $sql, [$lot_category, $lot['lot_name'], $lot['message'], $file_path, $lot['lot_rate'], $lot['lot_step'], $lot['lot_date'], $lot['lot_rate']]);
           $res = mysqli_stmt_execute($stmt);
           if($res) {
             $lot_id = mysqli_insert_id($connect);

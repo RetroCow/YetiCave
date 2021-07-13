@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-require_once("userdata.php");
 require_once('functions.php');
 $connect = mysqli_connect('localhost', 'root', '', 'yeti_cave');
 if (!$connect) {
@@ -77,7 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = 'INSERT INTO users (email, name, password, avatar, reg_date) VALUES (?, ?, ?, ?, NOW())';
         $stmt = db_get_prepare_stmt($connect, $sql, [$form['email'], $form['name'], $form['password'], $file_path]);
         $res = mysqli_stmt_execute($stmt);
-        header('Location:login.php');
+        if (!$res) {
+            $link_errors[] = mysqli_error($connect);
+            print_r($link_errors);
+        } else {
+            header('Location:login.php');
+        }
     } else {
         $main_content = get_template('templates/registration.php', ['errors' => $errors, 'form' => $form]);
     }
